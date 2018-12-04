@@ -1,4 +1,4 @@
-package com.example.gabrielisantos.p2_mobile
+package com.example.gabrielisantos.p2_mobile.entities
 
 data class Article ( val idDrink: String,
                      val strDrink: String?,

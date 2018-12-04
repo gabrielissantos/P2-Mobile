@@ -1,15 +1,14 @@
-package com.example.gabrielisantos.p2_mobile
+package com.example.gabrielisantos.p2_mobile.scenarios_main
 
 import android.content.Context
-import android.support.v7.view.menu.ActionMenuItemView
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
+import com.example.gabrielisantos.p2_mobile.entities.Article
+import com.example.gabrielisantos.p2_mobile.utils.GlideApp
 import com.example.gabrielisantos.p2_mobile.R
 //import com.example.gabrielisantos.p2_mobile.entities.Article
-import com.example.gabrielisantos.p2_mobile.MyAppGlideModule
 import kotlinx.android.synthetic.main.activity_cocktail_item.view.*
 
 class ArticleAdapter(val context: Context, val articles: List<Article>) : RecyclerView.Adapter<ArticleAdapter.ViewHolder>() {
