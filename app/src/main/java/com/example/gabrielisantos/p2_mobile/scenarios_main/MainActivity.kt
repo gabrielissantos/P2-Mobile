@@ -1,19 +1,26 @@
-package com.example.gabrielisantos.p2_mobile
+package com.example.gabrielisantos.p2_mobile.scenarios_main
 
 import android.content.Intent
 import android.net.Uri
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
+import android.widget.Toast
+import com.example.gabrielisantos.p2_mobile.entities.Article
+import com.example.gabrielisantos.p2_mobile.R
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), MainContract.View {
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val a1 = Article(
+        val presenter: MainContract.Presenter = MainPresenter(this)
+        presenter.onLoadList()
+
+        /*val a1 = Article(
                 idDrink = "13060",
                 strDrink = "Margarita",
                 strDrinkES = null,
@@ -66,7 +73,7 @@ class MainActivity : AppCompatActivity() {
                 dateModified = "2015-08-18 14:42:59"
         )
 
-        val a2 = Article (
+        val a2 = Article(
                 idDrink = "11118",
                 strDrink = "Blue Margarita",
                 strDrinkES = null,
@@ -121,17 +128,21 @@ class MainActivity : AppCompatActivity() {
 
         val testList = listOf(a1,a2)
 
-        exibeLista(testList)
+        showList(testList) */
     }
 
-    fun exibeLista(list: List<Article>){
-        val adapter = ArticleAdapter(this, list)
+    override fun showList(articles: List<Article>){
+        val adapter = ArticleAdapter(this, articles)
         adapter.setOnItemClickListener{position ->
             val openBrowser = Intent(Intent.ACTION_VIEW)
-            openBrowser.data = Uri.parse(list.get(position).strDrinkThumb)
+            openBrowser.data = Uri.parse(articles.get(position).strDrinkThumb)
             startActivity(openBrowser)
         }
         rvCocktail.adapter = adapter
         rvCocktail.layoutManager = LinearLayoutManager(this)
+    }
+
+    override fun showMessage(msg: String) {
+        Toast.makeText(this, msg, Toast.LENGTH_LONG).show()
     }
 }

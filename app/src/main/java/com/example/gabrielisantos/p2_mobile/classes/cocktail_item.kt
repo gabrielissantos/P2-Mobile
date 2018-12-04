@@ -1,7 +1,8 @@
-package com.example.gabrielisantos.p2_mobile
+package com.example.gabrielisantos.p2_mobile.classes
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import com.example.gabrielisantos.p2_mobile.R
 
 class cocktail_item : AppCompatActivity() {
 
